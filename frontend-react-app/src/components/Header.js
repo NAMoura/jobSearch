@@ -17,7 +17,7 @@ export default function Header() {
 
          
 
-          <Link href="/jobs" className="sm:px-8 px-6 font-semibold">
+          <Link href="/" className="sm:px-8 px-6 font-semibold">
             Jobs
           </Link>
           <Link

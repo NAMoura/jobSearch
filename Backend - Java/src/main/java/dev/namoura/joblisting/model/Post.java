@@ -6,6 +6,8 @@ import java.util.Arrays;
 @Document(collection = "JobPost")
 public class Post {
 
+
+    private String _id;
     private String profile;
     private String desc;
     private int exp;
@@ -44,6 +46,14 @@ public class Post {
 
     public void setTechs(String[] techs) {
         this.techs = techs;
+    }
+
+    public String get_id() {
+        return _id;
+    }
+
+    public void set_id(String _id) {
+        this._id = _id;
     }
 
     @Override

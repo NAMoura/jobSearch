@@ -2,10 +2,11 @@ import Link from "next/link";
 
 export default function JobCard({ job, index }){
 
+
     return (
-        <Link href={`/jobs/${index}`} className="border rounded-xl rounded-b-none overflow-hidden hover:shadow">
+        <Link href={`/jobs/${index}`} className="border rounded-xl overflow-hidden hover:shadow">
   <div className="bg-[#3D67AA] text-white text-center relative w-90 py-3 font-semibold">{job.profile}</div>
-  <div className="bg-white border h-44 p-6 flex flex-col">
+  <div className="bg-white border h-52 p-6 flex flex-col">
     <div className="flex-grow">
       {job.description}
     </div>

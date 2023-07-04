@@ -4,6 +4,8 @@ import dev.namoura.joblisting.PostRepository;
 import dev.namoura.joblisting.model.Post;
 import dev.namoura.joblisting.repository.SearchRespository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
 
@@ -44,4 +46,15 @@ public class PostController {
     public List<Post> getAllPosts() {
         return repo.findAll();
     }
+
+    @DeleteMapping("/posts/{id}")
+    public ResponseEntity<String> removePost(@PathVariable String id) {
+        try {
+            repo.deleteById(id);
+            return ResponseEntity.ok("Post removed successfully");
+        } catch (EmptyResultDataAccessException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
 }

@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 export default function Home() {
   const [jobs, setJobs] = useState([]);
   const [query, setQuery] = useState("");
+  console.log(jobs)
 
   useEffect(() => {
     const fetchJobs = async () => {
@@ -15,6 +16,7 @@ export default function Home() {
         );
 
         const jobs = response.data.map((job) => ({
+          id: job._id,
           profile: job.profile,
           description: job.desc,
           techs: job.techs,
@@ -30,10 +32,12 @@ export default function Home() {
     const fetchInitialJobs = async () => {
       try {
         const response = await axios.get(
-          `https://job-listing-test-both.onrender.com/posts/${query}`
+          `https://job-listing-test-both.onrender.com/posts/`
         );
+        console.log(response)
 
         const jobs = response.data.map((job) => ({
+          id:job._id,
           profile: job.profile,
           description: job.desc,
           techs: job.techs,
@@ -53,15 +57,15 @@ export default function Home() {
 
   return (
     <div className="container xl:max-w-screen-xl mx-auto py-12 px-6">
-      <MagnifyingGlassIcon className="w-6 h-6 flex-shrink-0" />
+      <div className="flex mb-6 w-52 bg-[#ffffff] p-2 rounded-lg"><MagnifyingGlassIcon className="w-6 h-6 flex-shrink-0" />
       <input
         type="text"
         placeholder="search"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
-        className="bg-[#ececec] block w-28 ml-2 item px-1"
+        className="bg-[#ffffff] block w-40 ml-2 item px-1 rounded"
       />
-
+</div>
       <div className="grid gap-10 lg:grid-cols-3 md:grid-cols-2 grid-cols-1">
         {jobs.map((job, index) => (
           <JobCard key={index} job={job} index={index} />
