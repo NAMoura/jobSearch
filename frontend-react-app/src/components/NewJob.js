@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import { toast } from "react-hot-toast";
 
 
 export default function NewJob() {
@@ -46,6 +47,7 @@ export default function NewJob() {
       );
 
       console.log("Job posted successfully:", response.data);
+      toast.success("New job was added!");
 
       // Reset form fields after successful submission
       setProfile("");
@@ -72,6 +74,9 @@ export default function NewJob() {
               type="text"
               value={profile}
               onChange={(e) => setProfile(e.target.value)}
+              minLength={5} 
+              maxLength={50} 
+              required
               className="bg-[#ffffff] px-1 rounded w-full"
             />
           </label>
@@ -80,9 +85,12 @@ export default function NewJob() {
           <label>
             <div className="font-semibold">Experience:</div>
             <input
-              type="text"
+              type="number"
               value={experience}
               onChange={(e) => setExperience(e.target.value)}
+              minLength={1} 
+              maxLength={2}
+              required 
               className="bg-[#ffffff] px-1 rounded w-full"
             />
           </label>
@@ -102,6 +110,7 @@ export default function NewJob() {
                   checked={techs.includes(option.value)}
                   onChange={() => handleTechChange(option.value)}
                   className="form-checkbox"
+                  
                 />
                 <span className="ml-2">{option.label}</span>
               </label>
@@ -115,7 +124,7 @@ export default function NewJob() {
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               className="w-full h-40 bg-[#ffffff] px-1 rounded"
-
+              required
             ></textarea>
           </label>
         </div>
