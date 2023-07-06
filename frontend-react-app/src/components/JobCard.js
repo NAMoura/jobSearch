@@ -12,7 +12,7 @@ export default function JobCard({ job }) {
         <div className="flex-grow">{job.description}</div>
         <div className="text-xs mt-auto">
           <p className="mb-2"> Years of experience: {job.experience}</p>
-          <p className="text-gray-500 ">| {job.techs.map((s) => s + " | ")}</p>
+          <p className="text-gray-500 "><span className="text-black">Techs: </span>{job.techs.map((s) => s + " | ")}</p>
         </div>
       </div>
     </div>
