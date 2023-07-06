@@ -125,6 +125,7 @@ export default function NewJob() {
               onChange={(e) => setDescription(e.target.value)}
               className="w-full h-40 bg-[#ffffff] px-1 rounded"
               required
+              maxLength={150}
             ></textarea>
           </label>
         </div>
